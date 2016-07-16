@@ -12,13 +12,11 @@ class Solution(object):
         :type sum: int
         :rtype: bool
         """
-        if root:
-            sum -= root.val
-            if sum == 0 and self.isLeaf(root):
-                return True;
-            return self.hasPathSum(root.left, sum) or self.hasPathSum(root.right, sum)
-        else:
-            return False
+        if root is None:    return False
+
+        sum -= root.val
+        if sum == 0 and self.isLeaf(root):  return True;
+        return self.hasPathSum(root.left, sum) or self.hasPathSum(root.right, sum)
 
     def isLeaf(self, node):
-        return not node.left and not node.right
+        return node.left == None and node.right == None
